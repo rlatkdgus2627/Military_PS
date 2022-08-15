@@ -1,3 +1,4 @@
+//항복 (WA)
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -79,7 +80,7 @@ int main(){
     cin >> v >> e;
     iota(parent + 1, parent + 1 + v, 1);
 
-    cnt = v;
+    cnt = v - 1;
 
     for(int i = 0; i < e; i++){
         cin >> x >> y >> w;
@@ -100,8 +101,9 @@ int main(){
         }
     }
 
-    if(cnt && !useless.size()){
+    if(cnt || !useless.size()){
         cout << "-1";
+		return 0;
     }
 
     dfs(1, 0);
@@ -135,9 +137,9 @@ int main(){
             }
             maxans = max(maxans, max(maxtable[x][0], maxtable[y][0]));
         }
-        ans = min(ans, total - maxans + data.weight);
+		if(ans > total - maxans + data.weight)	ans = total - maxans + data.weight;
     }
-    cout << ans;
+    cout << (ans == total || ans == 1e18 ? -1 : ans);
 
     return 0;
 }

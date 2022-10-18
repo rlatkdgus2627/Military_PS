@@ -1,4 +1,3 @@
-//항복 (WA)
 #include <bits/stdc++.h>
 
 using namespace std;
